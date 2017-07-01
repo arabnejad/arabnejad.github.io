@@ -16,3 +16,6 @@ http://hadian.org/2014/09/15/how-to-build-an-academic-website-with-jekyll/
 bundle exec jekyll build ; bundle exec jekyll serve  --incremental --watch ; pkill -KILL bundle
 
 bundle exec jekyll build ; bundle exec jekyll serve  --incremental --watch ; pkill -KILL bundle; pkill -KILL jekyll
+
+
+bundle exec jekyll build ; bundle exec jekyll serve  --incremental --watch ; pkill -KILL ruby2.3

@@ -25,50 +25,169 @@ function ChangeTab(e){
 	n=e;
 	}
 
-function WriteEducation(){
-	var element=document.querySelector("article#education>div"),txt="";
-	// var arr = { "one": 1, "two": [2,3], "three": 3 }; 
-	// element.innerHTML=arr["two"]+arr["one"];
-	// alert(element.nodeName);
-	
-	for (var i = 0; i < edu.length; i++) {
-		txt+=("<h1>" + edu[i]["section"] + "</h1>");
-		txt+="<br> <ul>";
-		for (var j = 0; j < edu[i]["li"].length; j++) {
-			txt+=("<li>"+edu[i]["li"][j]+"</li>");
-		}
-		txt += "</ul><br>";
-	}
+function Writeresume(){
+	var element=document.querySelector("article#resume>div"),txt="";
 
-	// element.innerHTML=edu[0]["section"]+"<br>"+edu[0]["li"][1][1] + "<br>"+edu[1]["li"][0];
+	for (var i = 0; i < resume.length; i++) {
+		txt+=("<h1>" + resume[i]["section"] + "</h1>");
+		txt+="<div class= br></div> <dl>";
+		for (var j = 0; j < resume[i]["dt"].length; j++) {
+			for (var k = 0; k< resume[i]["dt"][j].length ; k++) {
+
+				txt+="<dt>";
+					txt+="<div class= flex-container>";
+						txt+="<div class=left id= section >";
+							txt+="<h4>";
+								txt+= resume[i]["dt"][j][k]["SubLeft"];
+							txt+="</h4>";
+						txt+="</div>";
+						txt+="<div class=right >";
+							txt+="<h4>";
+								txt+= resume[i]["dt"][j][k]["SubRight"];
+							txt+="</h4>";
+						txt+="</div>";
+					txt+="</div>";
+					txt+="<div class= flex-container>";
+						txt+="<div class=left id = subsection>";
+							txt+="<p class=h6>";
+								txt+= resume[i]["dt"][j][k]["subsection"]["SubLeft"];
+							txt+="</p>";
+						txt+="</div>";
+						txt+="<div class=right >";
+							txt+="<h5>";
+								txt+= resume[i]["dt"][j][k]["subsection"]["SubRight"];
+							txt+="</h5>";
+						txt+="</div>";
+					txt+="</div>";
+					if((resume[i]["dt"][j][k]["subsection"]["li"].length)!=0){
+					for (var l = 0; l< resume[i]["dt"][j][k]["subsection"]["li"].length ; l++) {
+						txt+="<li class=h6>";
+							
+								txt+=resume[i]["dt"][j][k]["subsection"]["li"][l];
+							
+						txt+="</li>";
+					}}
+					txt+="<div class= br></div>";
+				txt+="</dt>";
+			}
+			
+		}
+		txt += "</dl><br>";
+	}
 	element.innerHTML = txt;
 }
 function WritePublication(){
 	
 	var element=document.querySelector("article#publication>div"),
-	txt="<h1>Publication</h1>",url;
+	txt="<h1>Publication</h1>";
 	for (var i = 0; i < pub.length; i++) {
-		txt+=("<h1 style = ' margin-top:40px;'>"+pub[i]["section"]+"</h1>");
+		txt+=("<h5 style = ' margin-top:40px;'>"+pub[i]["section"]+"</h5>");
 		txt+="<ul>";
 		for (var j = 0; j < pub[i]["li"].length; j++) {
-			txt+=("<li><p>"+pub[i]["li"][j][0]+"</p><p class = 'bold'>"+pub[i]["li"][j][1]+"</p><p class = 'conf'><i>"+pub[i]["li"][j][2]+"</i></p>")
+
+			txt+="<li >";
+			txt+="<p class = name >";
+				txt+="<i>";
+					txt+=pub[i]["li"][j][0];
+				txt+="</i>";
+			txt+="</p>";
+			txt+="<p class = conf >";
+				txt+=pub[i]["li"][j][1];
+			txt+="</p>";
+			txt+="<p class = name >";
+				txt+=pub[i]["li"][j][2];
+			txt+="</p>";
+
 			if(pub[i]["li"][j][3]==""){
 				txt+="</li>";
 			}
 			else{
-				// url = pub[i]["li"][j][3].split(":");
-				// txt+=("<h5><a class='linkDoi' href=https://doi.org/"+url[1]+">"+pub[i]["li"][j][3]+"</a></h5></li>");
-				txt+=("<h5><a class='linkDoi' href=https://doi.org/"+pub[i]["li"][j][3]+"><span>DOI</span><span>"+pub[i]["li"][j][3]+"</span></a></h5></li>");
+
+				txt+="<h5><a class='linkDoi' href=https://doi.org/";
+				txt+=pub[i]["li"][j][3];
+				txt+="><span>DOI</span><span>";
+				txt+=pub[i]["li"][j][3];
+				txt+="</span></a></h5></li>";
 			}
-			
-			
-			// txt+=(pub[i]["li"][j]+"</li>");
+
 		}
 		
 		txt += "</ul>";
 	}
 	element.innerHTML = txt;
 }
+function WriteTeaching(){
+	
+	var element=document.querySelector("article#teaching>div"),
+	txt="<h1>Teaching</h1>";
+	txt+="<div class= br></div>";
+	txt+="<dl>";
+	for (var i = 0; i < teaching.length; i++) {
+		// txt+=("<h4>" + teaching[i]["SubLeft"] + "</h4>");
+		txt+="<dt>";
+			txt+="<div class= flex-container>";
+				txt+="<div class=left id= section >";
+					txt+="<h4>";
+						txt+= teaching[i]["SubLeft"];
+					txt+="</h4>";
+				txt+="</div>";
+				txt+="<div class=right >";
+					txt+="<h4>";
+						txt+= teaching[i]["SubRight"];
+					txt+="</h4>";
+				txt+="</div>";
+			txt+="</div>";
+
+			txt+="<div class= flex-container>";
+				txt+="<div class=left id = subsection>";
+					txt+="<h5>";
+						txt+= teaching[i]["subsection"]["SubLeft"];
+					txt+="</h5>";
+				txt+="</div>";
+				txt+="<div class=right >";
+					txt+="<h5>";
+						txt+= teaching[i]["subsection"]["SubRight"];
+					txt+="</h5>";
+				txt+="</div>";
+			txt+="</div>";
+			// if (teaching[0]["subsection"]["li"].length > 0) {
+			// 	txt+=teaching[i]["subsection"]["li"][0];
+			// txt+=teaching[i]["subsection"]["li"][1];}
+			
+			if((teaching[i]["subsection"]["li"].length)!=0){
+			  for (var j=0;j<teaching[i]["subsection"]["li"].length;j++) {
+				txt+="<ul >";
+				txt+="<li >";
+				txt+="<div class= flex-container>";
+					txt+="<div class=left id = subsection>";
+						txt+="<h5>";
+							txt+= teaching[i]["subsection"]["li"][j][0];
+						txt+="</h5>";
+					txt+="</div>";
+					txt+="<div class=right >";
+						txt+="<h5>";
+							txt+= teaching[i]["subsection"]["li"][j][0];
+						txt+="</h5>";
+					txt+="</div>";
+				txt+="</div>";
+				txt+="</li>";
+				txt+="</ul>";
+				
+			  }
+			}
+
+
+
+
+
+		txt+="<div class= br></div>";
+		txt+="</dt>";
+		
+	}
+	txt += "</dl>";
+	element.innerHTML = txt;
+}
 loadPage();
-WriteEducation();
+Writeresume();
 WritePublication();
+WriteTeaching();

@@ -12,7 +12,7 @@ html, body {
 
 body {
   overflow: hidden;
-  font-family: "Fira Sans";
+  font-family: "Roboto";
   /*-----------------nav----------------------*/
   /*section*/
 }
@@ -222,21 +222,53 @@ body #publication li {
   margin: 25px 0px;
   height: auto;
 }
-body #publication li .bold {
-  font-weight: bold;
+body #publication li .name {
+  font-size: .75em;
+  /*line-height: 2em;*/
+  line-height: 150%;
+  margin: -1vh;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+}
+@media (max-width: 1000px) {
+  body #publication li .name {
+    /*line-height: 1.5em;*/
+    line-height: 150%;
+    margin: 0;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+  }
+}
+@media (max-width: 560px) {
+  body #publication li .name {
+    /*line-height: 2em;*/
+    line-height: 150%;
+    margin: -0.5vh;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+  }
 }
 body #publication li .conf {
-  font-size: 1.2vw;
+  font-size: 1vw;
+  font-weight: bolder;
+  line-height: 2em;
+  margin: -1vh;
 }
 @media (max-width: 1000px) {
   body #publication li .conf {
-    font-size: 1.8vw;
+    font-size: 1.6vw;
+    font-weight: bolder;
+    line-height: 1.5em;
+    margin: 0;
   }
 }
 @media (max-width: 560px) {
   body #publication li .conf {
-    font-size: 4vw;
+    font-size: 3vw;
     margin-bottom: 10px;
+    font-weight: bolder;
+    line-height: 2em;
+    margin: -0.5vh;
   }
 }
 body #publication li .linkDoi {
@@ -244,7 +276,7 @@ body #publication li .linkDoi {
   color: white;
   text-decoration: none;
   display: inline-block;
-  font-size: 1.2vw;
+  font-size: 1vw;
   padding: 0px;
   /*border: 1px solid red;*/
 }
@@ -298,17 +330,14 @@ body #publication li #icon {
     margin: 0px 0.8vw;
   }
 }
-body #blog img {
-  width: 30vw;
-  margin: 15vh calc(50% - 15vw);
-}
-@media (max-width: 560px) {
-  body #blog img {
+
+/*@media (max-width: 560px) {
+  body #teaching img {
     width: 50vw;
     margin: 15vh calc(50% - 25vw);
   }
 }
-
+*/
 /*
  *Scrolling
  */
@@ -323,12 +352,12 @@ a[id=about]:target ~ section article {
   }
 }
 
-a[id=education]:target ~ section article {
+a[id=resume]:target ~ section article {
   -webkit-transform: translateX(-75vw);
   transform: translateX(-75vw);
 }
 @media (max-width: 560px) {
-  a[id=education]:target ~ section article {
+  a[id=resume]:target ~ section article {
     -webkit-transform: translateX(-100vw);
     transform: translateX(-100vw);
   }
@@ -345,15 +374,50 @@ a[id=publication]:target ~ section article {
   }
 }
 
-a[id=blog]:target ~ section article {
+a[id=teaching]:target ~ section article {
   -webkit-transform: translateX(-225vw);
   transform: translateX(-225vw);
 }
 @media (max-width: 560px) {
-  a[id=blog]:target ~ section article {
+  a[id=teaching]:target ~ section article {
     -webkit-transform: translateX(-300vw);
     transform: translateX(-300vw);
   }
 }
+
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.left{
+  text-align: left;
+  flex-grow: 8;
+}
+
+.right{
+  text-align: right;
+  flex-grow: 2;
+  color: grey;
+  font-size: .67em;
+  
+}
+#subsection{
+  color : black;
+}
+
+#section{
+  color:#003d4c;
+}
+
+.h6{
+  font-size: .75em;
+  font-weight: bolder;
+  padding-left: 1vw;
+}
+.br{
+  height: 2vh;
+}
+
 
 /*# sourceMappingURL=style.css.map */
